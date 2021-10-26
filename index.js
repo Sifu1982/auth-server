@@ -9,14 +9,9 @@ const express = require('express');
  */
 const app = express();
 
-// GET
-app.get('/', (req, res) => {
-    res.json({
-        ok: true,
-        msg: 'Todo salió bien',
-        usId: 12345
-    })
-});
+//Rutas
+// use tiene dos parámetros, la ruta padre, y el archivo del que salen las rutas hijas
+app.use('/api/auth', require('./routes/auth'));
 
 
 
