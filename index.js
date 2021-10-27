@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config(); // Con esta importación estoy cargando las variables de entorno del archivo .env
 
-
+// console.log(process.env); // Esto es todo lo que node está ejecutando como variables de entorno
 
 /**
  * 
@@ -24,6 +25,6 @@ app.use('/api/auth', require('./routes/auth')); // use tiene dos parámetros, la
 
 
 // Levanto el servidor en el puerto 4000 y le paso el callback con la ejecución al ser levantado
-app.listen(4000, () => {
-    console.log(`Servidor corriendo en puerto ${4000}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Servidor corriendo en puerto ${process.env.PORT}`);
 });
