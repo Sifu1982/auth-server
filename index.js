@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 
 
@@ -6,12 +7,19 @@ const express = require('express');
  * 
  * Crear el servidor/aplicación de express
  * 
+ * [DEFINICIÓN] MIDDLEWARE: todo lo que utilice el metodo use
+ * 
  */
 const app = express();
 
+//CORS
+app.use(cors());
+
+// Lectura y parseo del body
+app.use(express.json());
+
 //Rutas
-// use tiene dos parámetros, la ruta padre, y el archivo del que salen las rutas hijas
-app.use('/api/auth', require('./routes/auth'));
+app.use('/api/auth', require('./routes/auth')); // use tiene dos parámetros, la ruta padre, y el archivo del que salen las rutas hijas
 
 
 
