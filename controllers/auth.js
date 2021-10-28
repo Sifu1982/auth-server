@@ -1,6 +1,7 @@
 // Truco opcional para poder "tipar" res como response. Se importa response y se iguala res a response
 const { response } = require('express');
-const Usuario = require('../models/Usuario')
+const Usuario = require('../models/Usuario');
+const bcrypt = require('bcryptjs');
 
 
 const crearUsuario = async (req, res = response) => {
@@ -26,6 +27,8 @@ const crearUsuario = async (req, res = response) => {
         const dbUser = new Usuario(req.body);
 
         // Hashear o encriptar la contraseña
+        const salt = bcrypt.genSaltSync(); // salt es un número aleatorio generado por bcrypt para poder modificar el password que ya tenía de mi usuario y que se encuentre encriptado
+        dbUser.password = bcrypt.hashSync(password, salt);
 
         // Generar el JWT (Jason Web Token)
 
