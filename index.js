@@ -13,6 +13,9 @@ require('dotenv').config(); // Con esta importación estoy cargando las variable
  */
 const app = express();
 
+// Directorio público
+app.use(express.static('public'));
+
 //CORS
 app.use(cors());
 
