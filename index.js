@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { dbConnection } = require('./db/config');
 require('dotenv').config(); // Con esta importación estoy cargando las variables de entorno del archivo .env
 
 // console.log(process.env); // Esto es todo lo que node está ejecutando como variables de entorno
@@ -12,6 +13,9 @@ require('dotenv').config(); // Con esta importación estoy cargando las variable
  * 
  */
 const app = express();
+
+//Base de datos
+dbConnection();
 
 // Directorio público
 app.use(express.static('public'));
